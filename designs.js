@@ -1,22 +1,6 @@
-// Select color input
-
-// Select size input
-
-/*//create a listener that will store the value of the grid height when the input section is changed
-$('#input_height').change(function(){
-    let gridHeight = $(this).val();
-    console.log(gridHeight);
-})
-
-//create a listner that will store the value of the grid width when the input section is changed
-$('#input_width').change(function(){
-    let gridWidth = $(this).val();
-    console.log(gridWidth);
-})*/
-
-//create event listener for the submit button being clicked on
-$('#submit').on('click keypress', function(){
-    //this keeps the submit button from clearing out what was choosen.
+//create event listener for the submit button when clicked
+$('#submit').on('click keypress', function() {
+    //this keeps the submit button from clearing out what was choosen
     event.preventDefault();
     //remove anything that was previously created in the DOM
     $('td').remove();
@@ -25,22 +9,25 @@ $('#submit').on('click keypress', function(){
     makeGrid();
 })
 
-// When size is submitted by the user, call makeGrid()
+// When submit buttons is click by the user, call makeGrid()
 function makeGrid() {
-    let row = $('#input_width').val();
-    let column = $('#input_height').val();
-    let table = $('#pixel_canvas');
-        for(var i = 0; i < column; i++){
+    //setting variables for row, column and table
+    const row = $('#input_width').val();
+    const column = $('#input_height').val();
+    const table = $('#pixel_canvas');
+    //setting a nested for loop to add tr's and td's to the DOM based off what user chooses
+    for (var i = 0; i < column; i++) {
         $(table).append('<tr>');
-        }
-        for (var j = 0; j < row; j++){
+    }
+    for (var j = 0; j < row; j++) {
         $('tr').append('<td></td>')
-        }
-    };
+    }
+};
 
-//create event listener that will set choosenColor to the color value that was picked
-$('#pixel_canvas').on('click', 'td',function(){
-    let choosenColor = $('#colorPicker').val();
-    console.log(choosenColor)
-    $(this).css({"background-color":choosenColor});
-})
+//create event listener that will grab the color choosen by user and set it as the background of the td that was clicked
+$('#pixel_canvas').on('click', 'td', function() {
+    const choosenColor = $('#colorPicker').val();
+    $(this).css({
+        "background-color": choosenColor
+    });
+});
