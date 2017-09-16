@@ -39,11 +39,7 @@ function makeGrid() {
     };
 
 //create event listener that will set choosenColor to the color value that was picked
-$('#colorPicker').change(function(){
-    let choosenColor = $(this).val();
-    console.log(choosenColor);
-})
-$('td').click(function(){
+$('#pixel_canvas').on('click', 'td',function(){
     let choosenColor = $('#colorPicker').val();
     console.log(choosenColor)
     $(this).css({"background-color":choosenColor});
